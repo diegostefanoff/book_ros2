@@ -10,6 +10,12 @@ set(dependencies
     std_msgs
 )
 
+add_executable(ex1_pub src/ex1_custom_publisher.cpp)
+ament_target_dependencies(ex1_pub ${dependencies})
+
+add_executable(ex1_sub src/ex1_custom_subscriber.cpp)
+ament_target_dependencies(ex1_sub ${dependencies})
+
 add_executable(publisher src/publisher.cpp)
 ament_target_dependencies(publisher ${dependencies})
 
@@ -32,6 +38,8 @@ add_executable(param_reader src/param_reader.cpp)
 ament_target_dependencies(param_reader ${dependencies})
 
 install(TARGETS
+  ex1_pub
+  ex1_sub
   publisher
   publisher_class
   subscriber_class

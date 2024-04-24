@@ -36,8 +36,8 @@ int main(int argc, char * argv[])
     "/detection", rclcpp::SensorDataQoS(),
     [command_pub](vision_msgs::msg::Detection2D::SharedPtr msg) {
       br2_tracking_msgs::msg::PanTiltCommand command;
-      command.pan = (msg->bbox.center.x / msg->source_img.width) * 2.0 - 1.0;
-      command.tilt = (msg->bbox.center.y / msg->source_img.height) * 2.0 - 1.0;
+      command.pan = (msg->bbox.center.position.x / msg->bbox.size_y) * 2.0 - 1.0;
+      command.tilt = (msg->bbox.center.position.y / msg->bbox.size_y) * 2.0 - 1.0;
       command_pub->publish(command);
     });
 

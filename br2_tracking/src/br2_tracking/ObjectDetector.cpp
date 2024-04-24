@@ -15,7 +15,7 @@
 #include <vector>
 
 #include "opencv2/opencv.hpp"
-#include "cv_bridge/cv_bridge.h"
+#include "cv_bridge/cv_bridge.hpp"
 
 #include "br2_tracking/ObjectDetector.hpp"
 
@@ -83,9 +83,9 @@ ObjectDetector::image_callback(const sensor_msgs::msg::Image::ConstSharedPtr & m
   detection_msg.header = msg->header;
   detection_msg.bbox.size_x = bbx.width;
   detection_msg.bbox.size_y = bbx.height;
-  detection_msg.bbox.center.x = cx;
-  detection_msg.bbox.center.y = cy;
-  detection_msg.source_img = *cv_ptr->toImageMsg();
+  detection_msg.bbox.center.position.x = cx;
+  detection_msg.bbox.center.position.y = cy;
+//   detection_msg.source_img = *cv_ptr->toImageMsg();
   detection_pub_->publish(detection_msg);
 
   if (debug_) {

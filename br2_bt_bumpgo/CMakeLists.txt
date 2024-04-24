@@ -6,6 +6,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CONFIG_PATH}")
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(behaviortree_cpp_v3 REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
@@ -23,6 +24,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(dependencies
     rclcpp
+    rclcpp_action
     behaviortree_cpp_v3
     sensor_msgs
     geometry_msgs
